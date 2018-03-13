@@ -1,9 +1,7 @@
-
 /*
 Game 0
 This is a ThreeJS program which implements a simple game
 The user moves a cube around the board trying to knock balls into a cone
-
 */
 
 
@@ -155,6 +153,9 @@ The user moves a cube around the board trying to knock balls into a cone
 				function( other_object, relative_velocity, relative_rotation, contact_normal ) {
 					if (other_object==avatar){
 						console.log("ball "+i+" hit the cone");
+						avatar.scale.x/=1.05;
+						avatar.scale.y/=1.05;
+						avatar.scale.z/=1.05;
 						soundEffect('good.wav');
 						gameState.score += 1;  // add one to the score
 						if (gameState.score==numBalls) {
