@@ -15,7 +15,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	var cone;
 	var npc;
 
-	var endScene, endScene1, endCamera, endText;
+	var endScene, endScene1, endCamera, endText, startScene, startCamera;
 
 
 
@@ -27,7 +27,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		    camera:camera}
 
 	var gameState =
-	     {score:0, health:10, scene:'main', camera:'none' }
+	     {score:0, health:10, scene:'start', camera:'none' }
 
 
 	// Here is the main game control
@@ -62,6 +62,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function init(){
       initPhysijs();
 			scene = initScene();
+			createStartScene();
 			createEndScene();
 			initRenderer();
 			createMainScene();
@@ -394,6 +395,12 @@ The user moves a cube around the board trying to knock balls into a cone
 		console.log("Keydown: '"+event.key+"'");
 		//console.dir(event);
 		// first we handle the "play again" key in the "youwon" scene
+		if (gameState.scene == 'start' && event.key=='p') {
+			gameState.scene = 'main';
+			gameState.score = 0;
+			addBalls();
+			return;
+		}
 		if (gameState.scene == 'youwon' && event.key=='r') {
 			gameState.scene = 'main';
 			gameState.score = 0;
@@ -499,7 +506,19 @@ The user moves a cube around the board trying to knock balls into a cone
     }
 
 	}
+function createStartScene(){
+		startScene = initScene();
+		startText = createSkyBox('start.jpg',10);
+		//endText.rotateX(Math.PI);
+		startScene.add(startText);
+		var light1 = createPointLight();
+		light1.position.set(0,200,20);
+		startScene.add(light1);
+		startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+		startCamera.position.set(0,50,1);
+		startCamera.lookAt(0,0,0);
 
+	}
 
 
 	function animate() {
@@ -507,7 +526,11 @@ The user moves a cube around the board trying to knock balls into a cone
 		requestAnimationFrame( animate );
 
 		switch(gameState.scene) {
-
+			
+			case "start":
+				//endText.rotateY(0.005);
+				renderer.render( startScene, startCamera );
+				break;
 			case "youwon":
 				//endText.rotateY(0.005);
 				renderer.render( endScene, endCamera );
