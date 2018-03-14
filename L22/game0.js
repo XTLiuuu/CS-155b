@@ -130,6 +130,21 @@ The user moves a cube around the board trying to knock balls into a cone
       scene.add(wall);
 			//console.dir(npc);
 			//playGameMusic();
+		var p1=createBoxMesh3(0x0000ff,4,20,4)
+			p1.position.set(10, 10, 20);
+			scene.add(p1);
+			var p2=createBoxMesh3(0x0000ff,4,20,4)
+			p2.position.set(-30, 10, 20);
+			scene.add(p2);
+			var p3=createBoxMesh3(0x0000ff,4,20,4)
+			p3.position.set(50, 10, -25);
+			scene.add(p3);
+			var p4=createBoxMesh3(0x0000ff,4,20,4)
+			p4.position.set(20, 10, 35);
+			scene.add(p4);
+			var p5=createBoxMesh3(0x0000ff,4,20,4)
+			p5.position.set(40, 10, -40);
+			scene.add(p5);
 
 	}
 
