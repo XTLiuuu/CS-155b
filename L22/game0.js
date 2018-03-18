@@ -92,11 +92,8 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			// create the avatar
 			avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-			avatar = createAvatar();
-			avatar.translateY(20);
 			avatarCam.translateY(-4);
 			avatarCam.translateZ(3);
-			scene.add(avatar);
 			gameState.camera = avatarCam;
 
       edgeCam = new THREE.PerspectiveCamera( 120, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -114,8 +111,9 @@ The user moves a cube around the board trying to knock balls into a cone
       npc.addEventListener('collision',function(other_object){
         if (other_object==avatar){
           gameState.health--;
-					npc.scale.x*=1.25;
-					npc.scale.y*=1.25;
+					npc.scale.x*=1.3;
+					npc.scale.y*=1.3;
+					npc.scale.z*=1.3;
 					if(gameState.health==0){
 						gameState.scene='youlose';
 					}
@@ -124,13 +122,14 @@ The user moves a cube around the board trying to knock balls into a cone
         }
       })
 			scene.add(npc);
+			createAvatar();
 
       var wall = createWall(0xffaa00,50,3,1);
       wall.position.set(10,0,10);
       scene.add(wall);
 			//console.dir(npc);
 			//playGameMusic();
-		var p1=createBoxMesh3(0x0000ff,4,20,4)
+			var p1=createBoxMesh3(0x0000ff,4,20,4)
 			p1.position.set(10, 10, 20);
 			scene.add(p1);
 			var p2=createBoxMesh3(0x0000ff,4,20,4)
@@ -351,26 +350,25 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createAvatar(){
 		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
-		var geometry = new THREE.BoxGeometry( 5, 5, 6);
-		var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
-		//var mesh = new THREE.Mesh( geometry, material );
-		var mesh = new Physijs.BoxMesh( geometry, pmaterial );
-		mesh.setDamping(0.1,0.1);
-		mesh.castShadow = true;
-
-		avatarCam.position.set(0,4,0);
-		avatarCam.lookAt(0,4,10);
-		mesh.add(avatarCam);
-
-  /*
-    var scoop1 = createBoxMesh2(0xff0000,10,1,0.1);
-		scoop1.position.set(0,-2,5);
-		mesh.add(scoop1);
-    */
-
-		return mesh;
+		var loader = new THREE.JSONLoader();
+		loader.load("../models/suzanne.json", function(geometry, materials){
+			var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
+			var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
+			avatar = new Physijs.BoxMesh( geometry, pmaterial );
+			avatar.translateY(20);
+			avatar.castShadow = true;
+			avatar.setDamping(0.1,0.1);
+			avatarCam.position.set(0,4,0);
+			avatarCam.lookAt(0,4,10);
+			scene.add(avatar);
+			avatar.add(avatarCam);
+		},
+		function(xhr){
+			console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+		function(err){
+			console.log("error in loading: "+err);});
 	}
+
 
 
 	function createConeMesh(r,h){
@@ -550,7 +548,7 @@ function createStartScene(){
 		requestAnimationFrame( animate );
 
 		switch(gameState.scene) {
-			
+
 			case "start":
 				//endText.rotateY(0.005);
 				renderer.render( startScene, startCamera );
