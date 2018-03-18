@@ -285,6 +285,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		mesh.castShadow = true;
 		return mesh;
 	}
+
 	function createBoxMesh3(color,w,h,d){
 		var geometry = new THREE.BoxGeometry( w, h, d);
 		var material = new THREE.MeshLambertMaterial( { color: color} );
@@ -355,6 +356,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
 			var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 			avatar = new Physijs.BoxMesh( geometry, pmaterial );
+			avatar.scale.set(3,3,3);
 			avatar.translateY(20);
 			avatar.castShadow = true;
 			avatar.setDamping(0.1,0.1);
