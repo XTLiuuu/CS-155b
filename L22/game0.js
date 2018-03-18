@@ -286,6 +286,15 @@ The user moves a cube around the board trying to knock balls into a cone
 		mesh.castShadow = true;
 		return mesh;
 	}
+	function createBoxMesh3(color,w,h,d){
+		var geometry = new THREE.BoxGeometry( w, h, d);
+		var material = new THREE.MeshLambertMaterial( { color: color} );
+		var pmaterial = new Physijs.createMaterial(material,0.9,0.05);
+		mesh = new Physijs.BoxMesh( geometry, pmaterial );
+		//mesh = new Physijs.BoxMesh( geometry, material,0 );
+		mesh.castShadow = true;
+		return mesh;
+	}
 
   function createWall(color,w,h,d){
     var geometry = new THREE.BoxGeometry( w, h, d);
