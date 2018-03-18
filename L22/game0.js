@@ -111,9 +111,9 @@ The user moves a cube around the board trying to knock balls into a cone
       npc.addEventListener('collision',function(other_object){
         if (other_object==avatar){
           gameState.health--;
-					npc.scale.x*=1.3;
-					npc.scale.y*=1.3;
-					npc.scale.z*=1.3;
+					npc.scale.x*=1.4;
+					npc.scale.y*=1.4;
+					npc.scale.z*=1.4;
 					if(gameState.health==0){
 						gameState.scene='youlose';
 					}
