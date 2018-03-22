@@ -202,7 +202,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		// load a sound and set it as the Audio object's buffer
 		var audioLoader = new THREE.AudioLoader();
-		audioLoader.load( '/sounds/loop.mp3', function( buffer ) {
+		audioLoader.load( 'loop.mp3', function( buffer ) {
 			sound.setBuffer( buffer );
 			sound.setLoop( true );
 			sound.setVolume( 0.05 );
@@ -220,7 +220,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 		// load a sound and set it as the Audio object's buffer
 		var audioLoader = new THREE.AudioLoader();
-		audioLoader.load( '/sounds/'+file, function( buffer ) {
+		audioLoader.load( file, function( buffer ) {
 			sound.setBuffer( buffer );
 			sound.setLoop( false );
 			sound.setVolume( 0.5 );
@@ -310,7 +310,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function createGround(image){
 		// creating a textured plane which receives shadows
 		var geometry = new THREE.PlaneGeometry( 180, 180, 128 );
-		var texture = new THREE.TextureLoader().load( '../images/'+image );
+		var texture = new THREE.TextureLoader().load( image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( 15, 15 );
@@ -331,7 +331,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function createSkyBox(image,k){
 		// creating a textured plane which receives shadows
 		var geometry = new THREE.SphereGeometry( 80, 80, 80 );
-		var texture = new THREE.TextureLoader().load( '../images/'+image );
+		var texture = new THREE.TextureLoader().load(image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( k, k );
@@ -352,7 +352,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function createAvatar(){
 		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
 		var loader = new THREE.JSONLoader();
-		loader.load("../models/suzanne.json", function(geometry, materials){
+		loader.load("suzanne.json", function(geometry, materials){
 			var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
 			var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 			avatar = new Physijs.BoxMesh( geometry, pmaterial );
@@ -375,7 +375,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createConeMesh(r,h){
 		var geometry = new THREE.ConeGeometry( r, h, 32);
-		var texture = new THREE.TextureLoader().load( '../images/tile.jpg' );
+		var texture = new THREE.TextureLoader().load( 'tile.jpg' );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
 		texture.repeat.set( 1, 1 );
