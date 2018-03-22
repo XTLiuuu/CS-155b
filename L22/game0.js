@@ -102,7 +102,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			addBalls();
 
-			cone = createConeMesh(4,6);
+			cone = createCubeMesh();
 			cone.position.set(10,3,7);
 			scene.add(cone);
 
@@ -356,7 +356,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
 			var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
 			avatar = new Physijs.BoxMesh( geometry, pmaterial );
-			avatar.scale.set(3,3,3);
+			avatar.scale.set(1.5,1.5,1.5);
 			avatar.translateY(20);
 			avatar.castShadow = true;
 			avatar.setDamping(0.1,0.1);
@@ -373,8 +373,8 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-	function createConeMesh(r,h){
-		var geometry = new THREE.ConeGeometry( r, h, 32);
+	function createCubeMesh(r,h){
+		var geometry = new THREE.BoxGeometry(4,10,4);
 		var texture = new THREE.TextureLoader().load( 'tile.jpg' );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
@@ -390,7 +390,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	function createBall(){
 		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
 		var geometry = new THREE.SphereGeometry( 1, 16, 16);
-		var material = new THREE.MeshLambertMaterial( { color: 0xffff00} );
+		var material = new THREE.MeshLambertMaterial( { color: 0xf0acb0} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.95);
     var mesh = new Physijs.BoxMesh( geometry, pmaterial );
 		mesh.setDamping(0.1,0.1);
