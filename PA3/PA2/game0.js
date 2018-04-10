@@ -300,16 +300,16 @@ The user moves a cube around the board trying to knock balls into a cone
 		for(i=0;i<numCoins;i++){
 			var coin = createCoin();
 			if(i > 15){
-				coin.position.set(randN(180),5,randN(180));
+				coin.position.set(randN(180),3,randN(180));
 			}
 			else if(i >= 10 && i<= 15){
-				coin.position.set(randN(-180),5,randN(180));
+				coin.position.set(randN(-180),3,randN(180));
 			}
 			else if(i >= 5 && i< 10){
-				coin.position.set(randN(180),5,randN(-180));
+				coin.position.set(randN(180),3,randN(-180));
 			}
 			else{
-				coin.position.set(randN(-180),5,randN(-180));
+				coin.position.set(randN(-180),3,randN(-180));
 			}
 
 			scene.add(coin);
@@ -586,8 +586,8 @@ The user moves a cube around the board trying to knock balls into a cone
 		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
 		var geometry = new THREE.CylinderGeometry( 1, 1, 0.5, 32 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xDAA520} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.95);
-    var mesh = new Physijs.BoxMesh( geometry, pmaterial );
+		var pmaterial = new Physijs.createMaterial(material,0.1, 0);
+    var mesh = new Physijs.BoxMesh( geometry, pmaterial, 0 );
 		mesh.setDamping(0.1,0.1);
 		mesh.castShadow = true;
 		mesh.rotateX(Math.PI/2);
@@ -752,7 +752,9 @@ The user moves a cube around the board trying to knock balls into a cone
 
     if (controls.reset){
       avatar.__dirtyPosition = true;
+			avatar.__dirtyRotation = true;
       avatar.position.set(40,10,40);
+			avatar.rotation.set(0, 0, 0);
     }
 
 	}
