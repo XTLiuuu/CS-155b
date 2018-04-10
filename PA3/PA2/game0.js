@@ -91,7 +91,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			// create the ground and the skybox
 			var ground = createGround('image/grass.jpg');
 			scene.add(ground);
-			var skybox = createSkyBox('image/sky.jpg',5);
+			var skybox = createSkyBox('image/P2.jpg',5);
 			scene.add(skybox);
 
 			// create the avatar
