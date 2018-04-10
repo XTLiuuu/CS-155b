@@ -486,6 +486,26 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 	}
+	function createSkyBox2(image,k){
+		// creating a textured plane which receives shadows
+		var geometry = new THREE.BoxGeometry( 300, 3, 300 );
+		var texture = new THREE.TextureLoader().load(image );
+		texture.wrapS = THREE.RepeatWrapping;
+		texture.wrapT = THREE.RepeatWrapping;
+		//texture.repeat.set( k, k );
+		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
+		//var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
+		//var mesh = new THREE.Mesh( geometry, material );
+		var mesh = new THREE.Mesh( geometry, material, 0 );
+
+		mesh.receiveShadow = false;
+
+
+		return mesh
+		// we need to rotate the mesh 90 degrees to make it horizontal not vertical
+
+
+	}
 
 	function createAvatar1(){
 		//var geometry = new THREE.SphereGeometry( 4, 20, 20);
@@ -736,19 +756,19 @@ The user moves a cube around the board trying to knock balls into a cone
     }
 
 	}
-function createStartScene(){
-		startScene = initScene();
-		startText = createSkyBox('image/start.jpg',10);
-		//endText.rotateX(Math.PI);
-		startScene.add(startText);
-		var light1 = createPointLight();
-		light1.position.set(0,200,20);
-		startScene.add(light1);
-		startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
-		startCamera.position.set(0,50,1);
-		startCamera.lookAt(0,0,0);
+	function createStartScene(){
+			startScene = initScene();
+			startText = createSkyBox2('image/P1.png',10);
+			//startText.rotateZ(Math.PI);
+			startScene.add(startText);
+			var light1 = createPointLight();
+			light1.position.set(0,200,0);
+			startScene.add(light1);
+			startCamera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			startCamera.position.set(0,150,0);
+			startCamera.lookAt(0,0,0);
 
-	}
+		}
 
 
 	function animate() {
