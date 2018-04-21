@@ -8,9 +8,10 @@ The user moves a cube around the board trying to knock balls into a cone
 	// First we declare the variables that hold the objects we need
 	// in the animation code
 	var scene, renderer;  // all threejs programs need these
-	var camera, avatarCam, edgeCam;  // we have three cameras in the main scene
+	var camera, avatarCam, edgeCam;  // we have two cameras in the main scene
 	var avatar;
 	var redball;
+	var suzanne;
 
 	// here are some mesh objects ...
 	var cone;
@@ -167,7 +168,10 @@ The user moves a cube around the board trying to knock balls into a cone
       })
 			scene.add(npc3);
 
-			createAvatar();
+			initSuzanneJSON();
+			initSuzanneOBJ();
+
+			//createAvatar();
 
 			var b1 = createBoxMesh3(0x0000ff,1,40,220)
 			b1.position.set(100,0,90);
@@ -381,6 +385,70 @@ The user moves a cube around the board trying to knock balls into a cone
 			)
 		}
 	}
+
+	var suzyOBJ;
+	var theObj;
+
+		function initSuzanneOBJ(){
+			var loader = new THREE.OBJLoader();
+			loader.load("../models/suzyA.obj",
+						function ( obj) {
+							console.log("loading obj file");
+							console.dir(obj);
+							//scene.add(obj);
+							obj.castShadow = true;
+							suzyOBJ = obj;
+							theOBJ = obj;
+							// you have to look inside the suzyOBJ
+							// which was imported and find the geometry and material
+							// so that you can pull them out and use them to create
+							// the Physics object ...
+							var geometry = suzyOBJ.children[0].geometry;
+							var material = suzyOBJ.children[0].material;
+							suzyOBJ = new Physijs.BoxMesh(geometry,material);
+							suzyOBJ.position.set(20,20,20);
+							scene.add(suzyOBJ);
+							console.log("just added suzyOBJ");
+							//suzyOBJ = new Physijs.BoxMesh(obj);
+
+							//
+						},
+						function(xhr){
+							console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+
+						function(err){
+							console.log("error in loading: "+err);}
+					)
+		}
+
+		function initSuzanneJSON(){
+			//load the monkey avatar into the scene, and add a Physics mesh and camera
+			var loader = new THREE.JSONLoader();
+			loader.load("../models/suzanne.json",
+						function ( geometry, materials ) {
+							console.log("loading suzanne");
+							var material = //materials[ 0 ];
+							new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
+							//geometry.scale.set(0.5,0.5,0.5);
+							suzanne = new Physijs.BoxMesh( geometry, material );
+
+							avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+							gameState.camera = avatarCam;
+
+							avatarCam.position.set(0,6,-15);
+							avatarCam.lookAt(0,4,10);
+							suzanne.add(avatarCam);
+							suzanne.position.set(-40,20,-40);
+							suzanne.castShadow = true;
+							suzanne.scale.set(2, 2, 2);
+							scene.add( suzanne  );
+							avatar=suzanne;
+						},
+						function(xhr){
+							console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
+						function(err){console.log("error in loading: "+err);}
+					)
+		}
 
 	function addCoins(){
 		var numCoins = 20;
@@ -649,7 +717,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		//var geometry = new THREE.CylinderGeometry( 1, 1, 0.5, 32 );
 		var material = new THREE.MeshLambertMaterial( { color: 0x228b22} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.95);
-    var mesh = new Physijs.BoxMesh( geometry, pmaterial );
+    var mesh = new Physijs.BoxMesh( geometry, pmaterial, 0.00001 );
 		mesh.setDamping(0.1,0.1);
 		mesh.castShadow = true;
 		return mesh;
