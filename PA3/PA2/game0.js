@@ -13,8 +13,6 @@ The user moves a cube around the board trying to knock balls into a cone
 	var redball;
 	var suzanne;
 
-	// here are some mesh objects ...
-	var cone;
 	var npc;
 	var npc1;
 	var npc2;
@@ -90,7 +88,8 @@ The user moves a cube around the board trying to knock balls into a cone
 			camera.lookAt(0,0,0);
 
 			// create the ground and the skybox
-			var ground = createGround('image/grass.jpg');
+			//var ground = createGround('image/grass.jpg');
+			var ground = createGround('image/mingrui.jpeg');
 			scene.add(ground);
 			var skybox = createSkyBox('image/P2.jpg',5);
 			scene.add(skybox);
@@ -108,10 +107,6 @@ The user moves a cube around the board trying to knock balls into a cone
 
 			addBalls();
 			addCoins();
-
-			cone = createCubeMesh();
-			cone.position.set(10,3,7);
-			scene.add(cone);
 
 			redball = createRedBall();
 			redball.position.set(randN(180),5,randN(180));
@@ -382,7 +377,6 @@ The user moves a cube around the board trying to knock balls into a cone
 			ball.addEventListener( 'collision',
 				function( other_object, relative_velocity, relative_rotation, contact_normal ) {
 					if (other_object==avatar){
-						console.log("ball "+i+" hit the cone");
 						avatar.scale.x/=1.05;
 						avatar.scale.y/=1.05;
 						avatar.scale.z/=1.05;
@@ -583,6 +577,13 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createBoxMesh2(color,w,h,d){
 		var geometry = new THREE.BoxGeometry( w, h, d);
+		/**
+		var texture = new THREE.TextureLoader().load( 'image/mingrui.jpeg' );
+		texture.wrapS = THREE.RepeatWrapping;
+		texture.wrapT = THREE.RepeatWrapping;
+		texture.repeat.set( 1, 1 );
+		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
+		*/
 		var material = new THREE.MeshLambertMaterial( { color: color} );
 		mesh = new Physijs.BoxMesh( geometry, material );
 		//mesh = new Physijs.BoxMesh( geometry, material,0 );
@@ -607,7 +608,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		var texture = new THREE.TextureLoader().load( image );
 		texture.wrapS = THREE.RepeatWrapping;
 		texture.wrapT = THREE.RepeatWrapping;
-		texture.repeat.set( 50, 50 );
+		texture.repeat.set( 20, 20 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.05);
 		//var mesh = new THREE.Mesh( geometry, material );
@@ -663,21 +664,6 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	}
 
-
-	function createCubeMesh(r,h){
-		var geometry = new THREE.BoxGeometry(4,10,4);
-		var texture = new THREE.TextureLoader().load( 'image/tile.jpg' );
-		texture.wrapS = THREE.RepeatWrapping;
-		texture.wrapT = THREE.RepeatWrapping;
-		texture.repeat.set( 1, 1 );
-		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,0.5);
-		var mesh = new Physijs.ConeMesh( geometry, pmaterial, 0 );
-		mesh.castShadow = true;
-		return mesh;
-	}
-
-
 	function createBall(){
 		var geometry = new THREE.SphereGeometry( 2, 20, 20);
 		//var geometry = new THREE.CylinderGeometry( 1, 1, 0.5, 32 );
@@ -691,14 +677,6 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function createRedBall(){
 		var geometry = new THREE.SphereGeometry( 2, 20, 20);
-		//var geometry = new THREE.CylinderGeometry( 1, 1, 0.5, 32 );
-		/**
-		var texture = new THREE.TextureLoader().load( 'image/mingrui.jpeg' );
-		texture.wrapS = THREE.RepeatWrapping;
-		texture.wrapT = THREE.RepeatWrapping;
-		texture.repeat.set( 1, 1 );
-		var material = new THREE.MeshLambertMaterial( { color: 0xffffff,  map: texture ,side:THREE.DoubleSide} );
-		*/
 		var material = new THREE.MeshLambertMaterial( { color: 0xff0000} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.95);
     var mesh = new Physijs.BoxMesh( geometry, pmaterial );
@@ -867,7 +845,7 @@ The user moves a cube around the board trying to knock balls into a cone
 	}
 	function createStartScene(){
 			startScene = initScene();
-			startText = createSkyBox2('image/P1.png',10);
+			startText = createSkyBox2('image/p1.png',10);
 			startScene.add(startText);
 			var light1 = createPointLight();
 			light1.position.set(0,200,0);
