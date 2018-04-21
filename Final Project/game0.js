@@ -296,38 +296,38 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-			var l1 = createBoxMesh3(1,40,220,'wall4.png')
+			var l1 = createBoxMesh3(1,40,220,'wall4.jpg')
 			l1.position.set(-90,0,100);
 			l1.rotateY(Math.PI/2);
 			scene.add(l1);
 
-			var l2 = createBoxMesh3( 1,40,180,'wall4.png')
+			var l2 = createBoxMesh3( 1,40,180,'wall4.jpg')
 			l2.position.set(-70,0,190);
 			l2.rotateY(Math.PI/2);
 			scene.add(l2);
 
-			var l3 = createBoxMesh3( 1,40,180,'wall4.png')
+			var l3 = createBoxMesh3( 1,40,180,'wall4.jpg')
 			l3.position.set(-110,0,150);
 			l3.rotateY(Math.PI/2);
 			scene.add(l3);
 
-			var l4 = createBoxMesh3( 1,40,40,'wall4.png')
+			var l4 = createBoxMesh3( 1,40,40,'wall4.jpg')
 			l4.position.set(-200,0,170);
 			scene.add(l4);
 
-			var l5 = createBoxMesh3( 1,40,40,'wall4.png')
+			var l5 = createBoxMesh3( 1,40,40,'wall4.jpg')
 			l5.position.set(20,0,210);
 			scene.add(l5);
 
-			var l6 = createBoxMesh3( 1,40,40,'wall4.png')
+			var l6 = createBoxMesh3( 1,40,40,'wall4.jpg')
 			l6.position.set(20,0,120);
 			scene.add(l6);
 
-			var l7 = createBoxMesh3( 1,40,40,'wall4.png')
+			var l7 = createBoxMesh3( 1,40,40,'wall4.jpg')
 			l7.position.set(-200,0,80);
 			scene.add(l7);
 
-			var l8 = createBoxMesh3( 1,40,220,'wall4.png')
+			var l8 = createBoxMesh3( 1,40,220,'wall4.jpg')
 			l8.position.set(-90,0,60);
 			l8.rotateY(Math.PI/2);
 			scene.add(l8);
@@ -335,20 +335,20 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-			var wall1 = createBoxMesh3( 1,30,800,'wall4.png')
+			var wall1 = createBoxMesh3( 1,30,800,'wall4.jpg')
 			wall1.position.set(230,0,0)
 			scene.add(wall1)
 
-			var wall2 = createBoxMesh3( 1,30,800,'wall4.png')
+			var wall2 = createBoxMesh3( 1,30,800,'wall4.jpg')
 			wall2.position.set(-230,0,0)
 			scene.add(wall2)
 
-			var wall3 = createBoxMesh3( 1,30,800,'wall4.png')
+			var wall3 = createBoxMesh3( 1,30,800,'wall4.jpg')
 			wall3.rotateY(Math.PI/2)
 			wall3.position.set(0,0,230)
 			scene.add(wall3)
 
-			var wall4 = createBoxMesh3( 1,30,800,'wall4.png')
+			var wall4 = createBoxMesh3( 1,30,800,'wall4.jpg')
 			wall4.position.set(0,0,-230)
 			wall4.rotateY(Math.PI/2)
 			scene.add(wall4)
