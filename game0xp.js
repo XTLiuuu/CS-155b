@@ -9,9 +9,8 @@ The user moves a cube around the board trying to knock balls into a cone
 	// in the animation code
 	var scene, renderer;  // all threejs programs need these
 	var camera, avatarCam, edgeCam;  // we have two cameras in the main scene
-	var avatar; //added
+	var avatar;
 	var redball;
-	var suzanne;
 	// here are some mesh objects ...
 
 	var cone;
@@ -194,9 +193,8 @@ The user moves a cube around the board trying to knock balls into a cone
         }
       })
 			scene.add(npc3);
-			initSuzanneJSON(); //added
-			initSuzanneOBJ(); //added
-			//createAvatar();
+
+			createAvatar();
 
       //var wall = createWall(0xffaa00,50,3,1);
       //wall.position.set(10,0,10);
@@ -229,39 +227,39 @@ The user moves a cube around the board trying to knock balls into a cone
 			// 	scene.add(p);
 			// }
 
-			var b1 = createBoxMesh3(0x0000ff,1,40,220)
+			var b1 = createBoxMesh3( 1,40,220,'wall2.jpg')
 			b1.position.set(100,0,90);
 			scene.add(b1);
 
-			var b2 = createBoxMesh3(0x0000ff,1,40,180)
+			var b2 = createBoxMesh3( 1,40,180,'wall2.jpg')
 			b2.position.set(190,0,70);
 			scene.add(b2);
 
-			var b3 = createBoxMesh3(0x0000ff,1,40,180)
+			var b3 = createBoxMesh3( 1,40,180,'wall2.jpg')
 			b3.position.set(150,0,110);
 			scene.add(b3);
 
-			var b4 = createBoxMesh3(0x0000ff,1,40,40)
+			var b4 = createBoxMesh3( 1,40,40,'wall2.jpg')
 			b4.position.set(170,0,200);
 			b4.rotateY(Math.PI/2);
 			scene.add(b4);
 
-			var b5 = createBoxMesh3(0x0000ff,1,40,40)
+			var b5 = createBoxMesh3( 1,40,40,'wall2.jpg')
 			b5.position.set(210,0,-20);
 			b5.rotateY(Math.PI/2);
 			scene.add(b5);
 
-			var b6 = createBoxMesh3(0x0000ff,1,40,40)
+			var b6 = createBoxMesh3( 1,40,40,'wall2.jpg')
 			b6.position.set(120,0,-20);
 			b6.rotateY(Math.PI/2);
 			scene.add(b6);
 
-			var b7 = createBoxMesh3(0x0000ff,1,40,40)
+			var b7 = createBoxMesh3( 1,40,40,'wall2.jpg')
 			b7.position.set(80,0,200);
 			b7.rotateY(Math.PI/2);
 			scene.add(b7);
 
-			var b8 = createBoxMesh3(0x0000ff,1,40,220)
+			var b8 = createBoxMesh3(1,40,220,'wall2.jpg')
 			b8.position.set(60,0,90);
 			scene.add(b8);
 
@@ -269,39 +267,39 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-			var r1 = createBoxMesh3(0xff0000,1,40,220)
+			var r1 = createBoxMesh3( 1,40,220,'wall3.jpg')
 			r1.position.set(-100,0,-90);
 			scene.add(r1);
 
-			var r2 = createBoxMesh3(0xff0000,1,40,180)
+			var r2 = createBoxMesh3( 1,40,180,'wall3.jpg')
 			r2.position.set(-190,0,-70);
 			scene.add(r2);
 
-			var r3 = createBoxMesh3(0xff0000,1,40,180)
+			var r3 = createBoxMesh3( 1,40,180,'wall3.jpg')
 			r3.position.set(-150,0,-110);
 			scene.add(r3);
 
-			var r4 = createBoxMesh3(0xff0000,1,40,40)
+			var r4 = createBoxMesh3( 1,40,40,'wall3.jpg')
 			r4.position.set(-170,0,-200);
 			r4.rotateY(Math.PI/2);
 			scene.add(r4);
 
-			var r5 = createBoxMesh3(0xff0000,1,40,40)
+			var r5 = createBoxMesh3( 1,40,40,'wall3.jpg')
 			r5.position.set(-210,0,20);
 			r5.rotateY(Math.PI/2);
 			scene.add(r5);
 
-			var r6 = createBoxMesh3(0xff0000,1,40,40)
+			var r6 = createBoxMesh3( 1,40,40,'wall3.jpg')
 			r6.position.set(-120,0,20);
 			r6.rotateY(Math.PI/2);
 			scene.add(r6);
 
-			var r7 = createBoxMesh3(0xff0000,1,40,40)
+			var r7 = createBoxMesh3( 1,40,40,'wall3.jpg')
 			r7.position.set(-80,0,-200);
 			r7.rotateY(Math.PI/2);
 			scene.add(r7);
 
-			var r8 = createBoxMesh3(0xff0000,1,40,220)
+			var r8 = createBoxMesh3(1,40,220,'wall3.jpg')
 			r8.position.set(-60,0,-90);
 			scene.add(r8);
 
@@ -309,76 +307,76 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-			var y1 = createBoxMesh3(0xabcd00,1,40,220)
+			var y1 = createBoxMesh3(1,40,220,'wall.jpg')
 			y1.position.set(90,0,-100);
 			y1.rotateY(Math.PI/2);
 			scene.add(y1);
 
-			var y2 = createBoxMesh3(0xabcd00,1,40,180)
+			var y2 = createBoxMesh3(1,40,180,'wall.jpg')
 			y2.position.set(70,0,-190);
 			y2.rotateY(Math.PI/2);
 			scene.add(y2);
 
-			var y3 = createBoxMesh3(0xabcd00,1,40,180)
+			var y3 = createBoxMesh3(1,40,180,'wall.jpg')
 			y3.position.set(110,0,-150);
 			y3.rotateY(Math.PI/2);
 			scene.add(y3);
 
-			var y4 = createBoxMesh3(0xabcd00,1,40,40)
+			var y4 = createBoxMesh3(1,40,40,'wall.jpg')
 			y4.position.set(200,0,-170);
 			scene.add(y4);
 
-			var y5 = createBoxMesh3(0xabcd00,1,40,40)
+			var y5 = createBoxMesh3(1,40,40,'wall.jpg')
 			y5.position.set(-20,0,-210);
 			scene.add(y5);
 
-			var y6 = createBoxMesh3(0xabcd00,1,40,40)
+			var y6 = createBoxMesh3(1,40,40,'wall.jpg')
 			y6.position.set(-20,0,-120);
 			scene.add(y6);
 
-			var y7 = createBoxMesh3(0xabcd00,1,40,40)
+			var y7 = createBoxMesh3(1,40,40,'wall.jpg')
 			y7.position.set(200,0,-80);
 			scene.add(y7);
 
-			var y8 = createBoxMesh3(0xabcd00,1,40,220)
+			var y8 = createBoxMesh3(1,40,220,'wall.jpg')
 			y8.position.set(90,0,-60);
 			y8.rotateY(Math.PI/2);
 			scene.add(y8);
 
 
 
-			var l1 = createBoxMesh3(0x00abcd,1,40,220)
+			var l1 = createBoxMesh3(1,40,220,'wall.jpg')
 			l1.position.set(-90,0,100);
 			l1.rotateY(Math.PI/2);
 			scene.add(l1);
 
-			var l2 = createBoxMesh3(0x00abcd,1,40,180)
+			var l2 = createBoxMesh3( 1,40,180,'wall.jpg')
 			l2.position.set(-70,0,190);
 			l2.rotateY(Math.PI/2);
 			scene.add(l2);
 
-			var l3 = createBoxMesh3(0x00abcd,1,40,180)
+			var l3 = createBoxMesh3( 1,40,180,'wall.jpg')
 			l3.position.set(-110,0,150);
 			l3.rotateY(Math.PI/2);
 			scene.add(l3);
 
-			var l4 = createBoxMesh3(0x00abcd,1,40,40)
+			var l4 = createBoxMesh3( 1,40,40,'wall.jpg')
 			l4.position.set(-200,0,170);
 			scene.add(l4);
 
-			var l5 = createBoxMesh3(0x00abcd,1,40,40)
+			var l5 = createBoxMesh3( 1,40,40,'wall.jpg')
 			l5.position.set(20,0,210);
 			scene.add(l5);
 
-			var l6 = createBoxMesh3(0x00abcd,1,40,40)
+			var l6 = createBoxMesh3( 1,40,40,'wall.jpg')
 			l6.position.set(20,0,120);
 			scene.add(l6);
 
-			var l7 = createBoxMesh3(0x00abcd,1,40,40)
+			var l7 = createBoxMesh3( 1,40,40,'wall.jpg')
 			l7.position.set(-200,0,80);
 			scene.add(l7);
 
-			var l8 = createBoxMesh3(0x00abcd,1,40,220)
+			var l8 = createBoxMesh3( 1,40,220,'wall.jpg')
 			l8.position.set(-90,0,60);
 			l8.rotateY(Math.PI/2);
 			scene.add(l8);
@@ -386,20 +384,20 @@ The user moves a cube around the board trying to knock balls into a cone
 
 
 
-			var wall1 = createBoxMesh3(0x0000ff,1,30,800)
+			var wall1 = createBoxMesh3( 1,30,800,'wall.jpg')
 			wall1.position.set(230,0,0)
 			scene.add(wall1)
 
-			var wall2 = createBoxMesh3(0x0000ff,1,30,800)
+			var wall2 = createBoxMesh3( 1,30,800,'wall.jpg')
 			wall2.position.set(-230,0,0)
 			scene.add(wall2)
 
-			var wall3 = createBoxMesh3(0x0000ff,1,30,800)
+			var wall3 = createBoxMesh3( 1,30,800,'wall.jpg')
 			wall3.rotateY(Math.PI/2)
 			wall3.position.set(0,0,230)
 			scene.add(wall3)
 
-			var wall4 = createBoxMesh3(0x0000ff,1,30,800)
+			var wall4 = createBoxMesh3( 1,30,800,'wall.jpg')
 			wall4.position.set(0,0,-230)
 			wall4.rotateY(Math.PI/2)
 			scene.add(wall4)
@@ -452,70 +450,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			)
 		}
 	}
-	var suzyOBJ;
-	var theObj;
 
-//added
-		function initSuzanneOBJ(){
-			var loader = new THREE.OBJLoader();
-			loader.load("../models/suzyA.obj",
-						function ( obj) {
-							console.log("loading obj file");
-							console.dir(obj);
-							//scene.add(obj);
-							obj.castShadow = true;
-							suzyOBJ = obj;
-							theOBJ = obj;
-							// you have to look inside the suzyOBJ
-							// which was imported and find the geometry and material
-							// so that you can pull them out and use them to create
-							// the Physics object ...
-							var geometry = suzyOBJ.children[0].geometry;
-							var material = suzyOBJ.children[0].material;
-							suzyOBJ = new Physijs.BoxMesh(geometry,material);
-							suzyOBJ.position.set(20,20,20);
-							scene.add(suzyOBJ);
-							console.log("just added suzyOBJ");
-							//suzyOBJ = new Physijs.BoxMesh(obj);
-
-							//
-						},
-						function(xhr){
-							console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
-
-						function(err){
-							console.log("error in loading: "+err);}
-					)
-		}
-//added
-		function initSuzanneJSON(){
-			//load the monkey avatar into the scene, and add a Physics mesh and camera
-			var loader = new THREE.JSONLoader();
-			loader.load("../models/suzanne.json",
-						function ( geometry, materials ) {
-							console.log("loading suzanne");
-							var material = //materials[ 0 ];
-							new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
-							//geometry.scale.set(0.5,0.5,0.5);
-							suzanne = new Physijs.BoxMesh( geometry, material );
-
-							avatarCam = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
-							gameState.camera = avatarCam;
-
-							avatarCam.position.set(0,6,-15);
-							avatarCam.lookAt(0,4,10);
-							suzanne.add(avatarCam);
-							suzanne.position.set(-40,20,-40);
-							suzanne.castShadow = true;
-							suzanne.scale.set(2, 2, 2);
-							scene.add( suzanne  );
-							avatar=suzanne;
-						},
-						function(xhr){
-							console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );},
-						function(err){console.log("error in loading: "+err);}
-					)
-		}
 	function addCoins(){
 		var numCoins = 20;
 
@@ -646,9 +581,13 @@ The user moves a cube around the board trying to knock balls into a cone
 		return mesh;
 	}
 
-	function createBoxMesh3(color,w,h,d){
+	function createBoxMesh3(w,h,d,image){
 		var geometry = new THREE.BoxGeometry( w, h, d);
-		var material = new THREE.MeshLambertMaterial( { color: color} );
+		var texture = new THREE.TextureLoader().load('image/'+image);
+		texture.wrapS = THREE.RepeatWrapping;
+		texture.wrapT = THREE.RepeatWrapping;
+		texture.repeat.set( 100, 20 );
+		var material = new THREE.MeshLambertMaterial( {map: texture, side:THREE.DoubleSide} );
 		var pmaterial = new Physijs.createMaterial(material,0.9,0.05);
 		//mesh = new THREE.Mesh( geometry, material );
 		mesh = new Physijs.BoxMesh( geometry, pmaterial,0 );
@@ -786,8 +725,8 @@ The user moves a cube around the board trying to knock balls into a cone
 		var geometry = new THREE.SphereGeometry( 2, 20, 20);
 		//var geometry = new THREE.CylinderGeometry( 1, 1, 0.5, 32 );
 		var material = new THREE.MeshLambertMaterial( { color: 0x228b22} );
-		var pmaterial = new Physijs.createMaterial(material,0.9,1);
-    var mesh = new Physijs.BoxMesh( geometry, pmaterial, 0.00001 ); //added
+		var pmaterial = new Physijs.createMaterial(material,0.9,0.95);
+    var mesh = new Physijs.BoxMesh( geometry, pmaterial );
 		mesh.setDamping(0.1,0.1);
 		mesh.castShadow = true;
 		return mesh;
@@ -875,12 +814,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "d": controls.right = true; break;
 			case "r": controls.up = true; break;
 			case "f": controls.down = true; break;
-			case "m":
-				if(gameState.money>=5){
-					controls.speed = 30;
-					gameState.money -=5;
-				} //added
-				break;
+			case "m": controls.speed = 30; break;
       case " ": controls.fly = true;
           console.log("space!!");
           break;
@@ -899,8 +833,6 @@ The user moves a cube around the board trying to knock balls into a cone
 			case "ArrowDown": avatarCam.translateZ(1);break;
 			case "q": avatarCam.rotateY(0.01); break;
 			case "e": avatarCam.rotateY(-0.01); break;
-
-
 
 		}
 
