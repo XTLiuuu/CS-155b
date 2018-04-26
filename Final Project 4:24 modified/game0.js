@@ -121,7 +121,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			bonusball1.position.set(randN(180),5,randN(180));
 			bonusball1.addEventListener('collision',function(other_object){
         if (other_object==avatar){
-					gameState.health += 5;
+					gameState.health += 3;
 					soundEffect('sound/good.wav');
 					bonusball1.position.y = this.position.y - 100;
 					bonusball1.__dirtyPosition = true;
@@ -134,7 +134,7 @@ The user moves a cube around the board trying to knock balls into a cone
 			bonusball2.position.set(randN(180),5,randN(180));
 			bonusball2.addEventListener('collision',function(other_object){
         if (other_object==avatar){
-					gameState.health += 7;
+					gameState.health += 3;
 					soundEffect('sound/good.wav');
 					bonusball2.position.y = this.position.y - 100;
 					bonusball2.__dirtyPosition = true;
