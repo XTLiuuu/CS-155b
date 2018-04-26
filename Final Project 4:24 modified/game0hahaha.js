@@ -463,7 +463,7 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function addDiamond(){
 		var dia1 = createDiamond();
-		dia1.position.set(5, 5, 5);
+		dia1.position.set(130, 5, 130);
 		scene.add(dia1)
 		console.log("dia1Add");
 
