@@ -463,20 +463,17 @@ The user moves a cube around the board trying to knock balls into a cone
 
 	function addDiamond(){
 		var dia1 = createDiamond();
-		dia1.position.set(5, 5, 5);
-		dia1.setAngularVelocity(new THREE.Vector3(0,3,0))
+		dia1.position.set(130, 5, 130);
 		scene.add(dia1)
 		console.log("dia1Add");
 
 		var dia2 = createDiamond();
-		dia2.position.set(-130, 5, -130);
-		dia2.setAngularVelocity(new THREE.Vector3(0,3,0))
+		dia2.position.set(-130, 5, -130)
 		scene.add(dia2)
 		console.log("dia2Add");
 
 		var dia3 = createDiamond();
 		dia3.position.set(-130, 5, 130);
-		dia3.setAngularVelocity(new THREE.Vector3(0,3,0))
 		scene.add(dia3)
 		console.log("dia3Add");
 
