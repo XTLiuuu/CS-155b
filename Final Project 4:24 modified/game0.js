@@ -522,6 +522,9 @@ The user moves a cube around the board trying to knock balls into a cone
 					if (other_object==avatar){
 						soundEffect('sound/bad.wav');
 						gameState.health--;
+						if(gameState.health==0){
+							gameState.scene='youlose';
+						}
 						this.position.y = this.position.y - 100;
 						this.__dirtyPosition = true;
 						console.log("Dodge the spike!!!");
