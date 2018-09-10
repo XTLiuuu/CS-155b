@@ -6,9 +6,9 @@ This is a game for one player. The player represents the monkey avatar in the ma
 
 ### Instruction page 
 
-![screenshot1](computer-graphics/blob/master/screenshot1.png)
+![screenshot1](https://github.com/XTLiuuu/computer-graphics/blob/master/screenshot1.png)
 
-![screenshot2](computer-graphics/blob/master/screenshot1.png)
+![screenshot2](https://github.com/XTLiuuu/computer-graphics/blob/master/screenshot2.png)
 
 # Run Command 
 
