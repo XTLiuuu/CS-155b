@@ -536,7 +536,7 @@ The user moves a cube around the board trying to knock balls into a cone
 		function initSuzanneJSON(){
 			//load the monkey avatar into the scene, and add a Physics mesh and camera
 			var loader = new THREE.JSONLoader();
-			loader.load("../models/suzanne.json",
+			loader.load("../image/suzanne.json",
 						function ( geometry, materials ) {
 							console.log("loading suzanne");
 							var material =
