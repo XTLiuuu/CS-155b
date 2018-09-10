@@ -12,6 +12,8 @@ This is a game for one player. The player represents the monkey avatar in the ma
 
 # Run Command 
 
-python -m SimpleHTTPServer 
-localhost: 8000
+Terminal: python -m SimpleHTTPServer 
+
+Browser: localhost: 8000
+
 choose the "game0.html" file
